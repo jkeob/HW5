@@ -33,8 +33,25 @@ class ProblemSolutions {
     public boolean isSubset(int list1[], int list2[]) {
 
         // ADD YOU CODE HERE -- DON'T FORGET TO ADD YOR NAME AT TOP OF FILE
+        Hashtable<Integer, Integer> hashtable = new Hashtable<>();
 
-        return false;
+        // loop through list1 and put each value into the hashtable
+        // the key here is just the index, and the value is the element from list1
+        for (int i = 0; i < list1.length; i++) {
+            hashtable.put(i, list1[i]);
+        }
+
+        // now loop through list2 to check if each value is in the hashtable
+        for (int i = 0; i < list2.length; i++) {
+            // if we find a value in list2 that isn't in the hashtable it's not a subset
+            if (!hashtable.contains(list2[i])) {
+                return false;
+            }
+        }
+
+
+
+        return true;
     }
 
 
@@ -54,8 +71,23 @@ class ProblemSolutions {
     public int findKthLargest(int[] array, int k) {
 
         // ADD YOUR CODE HERE
+        //sort it first with insertion sort
+        for (int i = 1; i < array.length; i++) {
+            int key = array[i];
+            int j = i - 1;
 
-        return 0;
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j];
+                j--;
+            }
+
+            array[j + 1] = key;
+        }
+
+        System.out.println(array[array.length-(k)]);
+
+        //count back from the end of the array
+        return array[array.length-k];
     }
 
 
@@ -75,8 +107,32 @@ class ProblemSolutions {
     public int[] sort2Arrays(int[] array1, int[] array2) {
 
         // ADD YOU CODE HERE
+        //combine the two arrays.
+        int[] arrayCombined = new int[array1.length+array2.length];
 
-        return null;
+        for (int i = 0; i < array1.length ; i++) {
+            arrayCombined[i] = array1[i];
+        }
+        for (int i = 0; i <array2.length; i++) {
+            arrayCombined[i+array1.length] = array2[i];
+        }
+
+        //insertion sort them
+        for (int i = 1; i < arrayCombined.length; i++) {
+            int key = arrayCombined[i];
+            int j = i - 1;
+
+            while (j >= 0 && arrayCombined[j] > key) {
+                arrayCombined[j + 1] = arrayCombined[j];
+                j--;
+            }
+
+            arrayCombined[j + 1] = key;
+        }
+
+
+
+        return arrayCombined;
     }
 
 }
