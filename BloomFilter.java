@@ -1,7 +1,7 @@
 
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   Jacob / 001
  *
  *   Note, additional comments provided throughout source code is
  *   for educational purposes.
